@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro Amor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #ff6f61;
+    }
+    h2 {
+      font-size: 2rem;
+      margin: 20px 0;
+    }
+    .contador {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+    .details {
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Christian & Noemí</h1>
+  <h2>Juntos desde el 21 de junio de 2024</h2>
+  <div class="contador" id="contador">
+    Calculando el tiempo de amor...
+  </div>
+  <div class="details">
+    Cada día juntos es una bendición y una aventura.  
+    ¡Gracias por ser mi todo!  
+  </div>
+  <div class="footer">
+    Hecho con mucho amor por Christian ❤️
+  </div>
+  
+  <script>
+    function calcularTiempo() {
+      const fechaInicio = new Date("2024-06-21T00:00:00");
+      const ahora = new Date();
+
+      let meses = ahora.getMonth() - fechaInicio.getMonth() + (ahora.getFullYear() - fechaInicio.getFullYear()) * 12;
+      let días = ahora.getDate() - fechaInicio.getDate();
+
+      // Ajustar días y meses si el día actual es menor al día de inicio
+      if (días < 0) {
+        meses--;
+        const ultimoDiaMesAnterior = new Date(
+          ahora.getFullYear(),
+          ahora.getMonth(),
+          0
+        ).getDate();
+        días += ultimoDiaMesAnterior;
+      }
+
+      // Calcular horas, minutos y segundos
+      const diferencia = ahora - fechaInicio;
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      // Mostrar el resultado
+      document.getElementById("contador").innerHTML = `
+        Han pasado <strong>${meses}</strong> meses, <strong>${días
